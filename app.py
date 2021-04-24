@@ -11,7 +11,8 @@ from linebot.models import *
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('i9qgRC/ZQUCVbsrwf9Rf+4wk4jgHcLn+5kKsqFlxjjjon0DUdUn7b1BFLghqrgSnkxWFSBOW/uPIst/skNpZtIaF3drrcWUdf49HMPp8Z9Dm2xe8HcQdfG6kyF9SE1NNEwFt/USWM+gyGVeqyWja6AdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('qYQhozjGqOEA9aCh9WFo5IGXlHbuPoX6HTQX98QB9UxOhZdtfidjNzNjYQSwYLAkkxWFSBOW/uPIst/skNpZtIaF3drrcWUdf49HMPp8Z9B7C0S60Qe7pT+awrMDe+Li8RcFTI3nZOHwM/oWqvCskFGUYhWQfeY8sLGRXgo3xvw=
+')
 # Channel Secret
 handler = WebhookHandler('077515768e6b7dead068b17e3f2b9bc6')
 
@@ -33,7 +34,10 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text='Hello, world')
+    message = ImageSendMessage(
+        original_content_url='https://cadtc.com.tw/images/section02course02.jpg',
+        preview_image_url='https://www.cadtc.com.tw/m4/images/20201224arm_mainbanner.jpg'
+        )
     line_bot_api.reply_message(event.reply_token, message)
 
 import os
